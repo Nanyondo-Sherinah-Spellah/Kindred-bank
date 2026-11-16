@@ -1,0 +1,45 @@
+// Server-only internal knowledge source. Never imported by client code or shown in the UI.
+import type { KnowledgeRow } from "./engine.server";
+
+const r = (id: string, topic: string, category: string, keywords: string[], approved_answer: string): KnowledgeRow => ({
+  id: `int-${id}`, topic, category, keywords, approved_answer,
+});
+
+export const INTERNAL_KB: KnowledgeRow[] = [
+  r("profile", "About Kindred Bank", "Bank", ["about kindred", "who are you", "head office", "managing director", "how many branches", "ndic", "insured"],
+    "Kindred Microfinance Bank Limited is a licensed national microfinance bank founded in 2011, with its head office at 27 Marina Crescent, Victoria Island, Lagos. We have 24 branches in 9 states, 180 Kindred Agent points and 6 ATMs. Customer deposits are insured by the NDIC up to the applicable limit."),
+  r("contacts", "Contact details", "Contacts", ["contact", "phone number", "customer care", "call you", "whatsapp", "email address", "ussd", "social media handle"],
+    "Customer care (24/7 AI agent): +234 700 555 0199; human agents Monday to Saturday, 7:00am to 9:00pm. WhatsApp Banking: +234 700 555 0188 (24 hours). USSD: *347*88#. General email: support@kindredmfb.example. Complaints: complaints@kindredmfb.example. Fraud and card block: fraud@kindredmfb.example."),
+  r("hours", "Branch hours", "Branches", ["branch hours", "opening hours", "closing time", "working hours", "open on saturday", "what time"],
+    "Our branches open Monday to Friday, 8:00am to 4:00pm. On Saturday, 10:00am to 2:00pm at Ikeja, Wuse 2, Port Harcourt and Benin City only. Branches are closed on public holidays; the app, USSD, WhatsApp Banking, internet banking and Kindred Agents are available 24 hours."),
+  r("branches", "Branch locations", "Branches", ["branch location", "where is your branch", "nearest branch", "branches", "address"],
+    "Branches: Head Office, 27 Marina Crescent, Victoria Island, Lagos; Ikeja, 14 Obafemi Awolowo Way; Surulere, 9 Adeniran Ogunsanya Street; Wuse 2 (Abuja), 31 Aminu Kano Crescent; GRA Port Harcourt, 18 Aba Road; Ibadan, 5 Ring Road, Challenge; Benin City, 42 Sapele Road; Enugu, 11 Okpara Avenue, Independence Layout."),
+  r("savings", "Savings accounts", "Savings", ["savings account", "everyday savings", "goal saver", "kids saver", "interest rate on savings", "current account"],
+    "Everyday Savings opens with ₦1,000, earns 4.0% a year paid monthly, no monthly fee, 4 free withdrawals a month then ₦50 each. Goal Saver: ₦5,000 a month, 6.0% a year paid at maturity, locked 3 to 12 months. Kids Saver opens with ₦500, 5.0% a year. Current Account opens with ₦10,000, no interest, ₦500 monthly fee waived above ₦50,000."),
+  r("fixed", "Fixed deposit", "Savings", ["fixed deposit", "fd rate", "invest money", "deposit rate"],
+    "Fixed Deposit minimum is ₦100,000. Rates a year: 30 to 89 days 8%, 90 to 179 days 10%, 180 to 364 days 11.5%, 365 days 13%. Interest is paid at maturity; early liquidation cuts the rate by 50%."),
+  r("loans", "Loan products", "Loans", ["loan", "business loan", "sme loan", "salary advance", "group loan", "asset finance", "education loan", "loan interest", "apply for loan", "loan requirements"],
+    "Our loans: Quick Salary Advance ₦20,000 to ₦300,000, 1 to 3 months, 3.5% a month (salary account of 3+ months). SME Growth Loan ₦100,000 to ₦5,000,000, 3 to 18 months, 3.0% a month reducing balance; needs business registration or trade association letter, 6 months of statements and 1 guarantor. Group Loan ₦50,000 to ₦500,000 per member at 2.5% a month. Asset Finance up to ₦3,000,000 at 2.8% a month with 20% equity. Education Loan up to ₦1,000,000 at 2.0% a month."),
+  r("repay", "Loan repayment terms", "Loans", ["late repayment", "early settlement", "pay off loan", "how to repay", "repayment channels", "penalty"],
+    "Late repayment costs 1% of the overdue instalment per week, capped at 10%. Early settlement has no penalty; interest is charged only up to the settlement date. You can repay by auto-debit, app, USSD, branch, agent, or bank transfer to the loan repayment account."),
+  r("fees", "Fees and charges", "Fees", ["fees", "charges", "transfer fee", "atm fee", "sms alert", "statement fee", "reference letter", "card fee"],
+    "Account opening and transfers to Kindred accounts are free. Transfers to other banks: ₦10 up to ₦5,000, ₦25 from ₦5,001 to ₦50,000, ₦50 above. Verve card ₦1,000 (replacement ₦1,500). Kindred ATMs free; other banks' ATMs 3 free a month then ₦35. SMS alert ₦4; e-statement free; printed statement ₦500 per 6 months; reference letter ₦2,000."),
+  r("tiers", "Account tiers and limits", "Accounts", ["tier", "transfer limit", "daily limit", "maximum balance", "upgrade account"],
+    "Tier 1 (phone, name, date of birth, photo, BVN or NIN): ₦50,000 a day, ₦300,000 maximum balance. Tier 2 (adds BVN, NIN and valid ID): ₦200,000 a day, ₦500,000 maximum balance. Tier 3 (adds proof of address and utility bill): ₦1,000,000 a day, no balance limit."),
+  r("open", "Account opening", "Accounts", ["open account", "account registration", "new account", "requirements to open"],
+    "To open an account you must be 18 or older with a valid ID (NIN slip, voter's card, driver's licence or international passport), BVN and a passport photo; proof of address for Tier 3. Open at a branch, with an agent or in the Kindred app. Opening is free."),
+  r("password", "Forgot app password", "Digital", ["forgot password", "reset password", "app password", "locked out"],
+    "Tap \"Forgot password\" in the Kindred app, confirm with the OTP sent to your BVN-linked phone and a selfie. It resets in minutes. Never share your OTP with anyone."),
+  r("card", "Lost or stolen card", "Cards", ["lost card", "card lost", "block card", "card stolen"],
+    "Block your card at once in the app, by dialling *347*88*0#, or by calling customer care on +234 700 555 0199. A replacement card costs ₦1,500."),
+  r("security", "Security advice", "Security", ["security tips", "safe banking", "do you ask for pin", "otp request", "suspicious message"],
+    "Kindred never asks for your PIN, OTP, password or full card number by call, email, SMS or social media. Never click links in unknown messages. Report anything suspicious to fraud@kindredmfb.example."),
+  r("dormant", "Dormant account", "Accounts", ["dormant", "inactive account", "reactivate"],
+    "An account becomes dormant after 12 months with no customer transaction. Reactivate it at any branch with a valid ID."),
+  r("complaints", "Complaints process", "Service", ["complaint process", "how long to resolve", "complaint timeline"],
+    "Complaints are acknowledged within 24 hours and resolved within 5 working days. If unresolved, they go to the Head of Customer Experience, then the CBN consumer protection department."),
+  r("promo", "Promotions", "Promotions", ["promotion", "refer a friend", "referral", "bonus", "festive"],
+    "Refer-a-Friend: you and your friend each get ₦1,000 when your friend deposits ₦5,000 within 30 days. Festive Goal Saver bonus: +1% interest until 31 December."),
+  r("careers", "Jobs", "Other", ["job", "career", "vacancy", "cv"],
+    "For job enquiries, please send your CV to careers@kindredmfb.example."),
+];
